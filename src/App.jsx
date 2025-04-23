@@ -14,29 +14,27 @@ function App() {
   const vantaRef = useRef(null);
 
   useEffect(() => {
-    if (window.VANTA && window.VANTA.WAVES) {
+    if (window.VANTA && window.VANTA.WAVES && window.THREE) {
       const effect = window.VANTA.WAVES({
         el: vantaRef.current,
         THREE: window.THREE,
-        color: 0x111111,            // Wave color (dark gray)
-        shininess: 50,             // More glow
-        waveHeight: 15,            // Smaller waves
-        waveSpeed: 0.3,            // Slower animation
+        color: 0x111111,
+        shininess: 50,
+        waveHeight: 15,
+        waveSpeed: 0.3,
         zoom: 1.0,
-        backgroundColor: 0x000000, // Pure black background
+        backgroundColor: 0x000000,
       });
-  
+
       return () => {
         if (effect) effect.destroy();
       };
     }
   }, []);
-  
 
   return (
-    <div ref={vantaRef} className="layout" style={{ minHeight: "100%", height: "auto" }}>
-
-      <div className="overlay">
+    <div ref={vantaRef} className="vanta-wrapper">
+      <div className="layout">
         <Navbar />
         <main className="content">
           <Routes>
