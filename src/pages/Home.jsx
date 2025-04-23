@@ -1,4 +1,5 @@
 import './Home.scss';
+import SoundCloudEmbed from '../components/SoundCloudEmbed';
 
 function Home() {
   return (
@@ -29,37 +30,13 @@ function Home() {
         </div>
 
       </div>
-      <div className="soundcloud-section">
-        <h2>🎧 Latest Drop</h2>
-        <iframe
-          width="100%"
-          height="300"
-          scrolling="no"
-          frameBorder="no"
-          allow="autoplay"
-          title="3POLAR - CARIÑITO"
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2079525054&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-        ></iframe>
-        <div className="soundcloud-caption">
-          <a
-            href="https://soundcloud.com/3polar"
-            title="3POLAR"
-            target="_blank"
-            rel="noreferrer"
-          >
-            3POLAR
-          </a>{' '}
-          ·{' '}
-          <a
-            href="https://soundcloud.com/3polar/3polar-carinito-dnb-edit"
-            title="3POLAR - CARIÑITO (DnB Edit)"
-            target="_blank"
-            rel="noreferrer"
-          >
-            3POLAR - CARIÑITO (DnB Edit)
-          </a>
-        </div>
-      </div>
+      <SoundCloudEmbed
+  title="3POLAR - CARIÑITO (DnB Edit)"
+  artist="3polar"
+  trackUrl="https://soundcloud.com/3polar/3polar-carinito-dnb-edit"
+  embedUrl="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2079525054&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=false"
+/>
+      
     </div>
   );
 }
