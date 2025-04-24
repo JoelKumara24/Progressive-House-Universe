@@ -4,14 +4,23 @@
 @use '../../components/Footer.scss';
 @use '../../pages/Home.scss';
 
+$font-body: 'DM Sans', sans-serif;
+$font-heading: 'Space Grotesk', sans-serif;
+
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: $font-body;
+  color: #ffffff;
   background: #0f0f0f;
-  color: #fff;
+  margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+}
+
+
 
 .vanta-wrapper {
   position: relative;

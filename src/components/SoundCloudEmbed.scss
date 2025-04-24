@@ -1,44 +1,53 @@
-// src/components/SoundCloudEmbed.scss
 .sc-embed-card {
-    background-color: rgba(0, 0, 0, 0.4);
-    border: 1px solid #333;
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-top: 2rem;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
-    transition: transform 0.3s ease;
-  
-    &:hover {
-      transform: scale(1.01);
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 640px;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  .sc-title {
+    font-size: 1.4rem;
+    color: #888c8f;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .sc-iframe-wrapper {
+    display: flex;
+    justify-content: center; // centers the iframe
+    border-radius: 10px;
+    overflow: hidden;
+
+    iframe {
+      width: 100%; // now we let the wrapper manage width
+      max-width: 480px;
     }
-  
-    .sc-title {
-      font-size: 1.6rem;
-      color: #ff5555;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-  
-    .sc-iframe-wrapper {
-      border-radius: 10px;
-      overflow: hidden;
-    }
-  
-    .sc-caption {
-      margin-top: 0.8rem;
-      font-size: 0.85rem;
-      color: #ccc;
-  
-      a {
-        color: #fff;
-        font-weight: bold;
-        text-decoration: none;
-  
-        &:hover {
-          text-decoration: underline;
-          color: #ff5555;
-        }
+  }
+
+  .sc-caption {
+    margin-top: 0.8rem;
+    font-size: 0.85rem;
+    color: #ccc;
+    text-align: center;
+
+    a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+        color: #ff5555;
       }
     }
   }
-  
+}

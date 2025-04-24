@@ -21,7 +21,7 @@ function App() {
         color: 0x111111,
         shininess: 50,
         waveHeight: 15,
-        waveSpeed: 0.3,
+        waveSpeed: 0.9,
         zoom: 1.0,
         backgroundColor: 0x000000,
       });

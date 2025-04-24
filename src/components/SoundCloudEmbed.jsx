@@ -7,7 +7,7 @@ function SoundCloudEmbed({ title, artist, trackUrl, embedUrl }) {
       <h2 className="sc-title">🎧 {title}</h2>
       <div className="sc-iframe-wrapper">
         <iframe
-          width="100%"
+          width="50%"
           height="200"
           scrolling="no"
           frameBorder="no"
