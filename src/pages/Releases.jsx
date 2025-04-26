@@ -4,37 +4,51 @@ import "./Releases.scss";
 import { FaPlay, FaPause } from "react-icons/fa";
 
 // Updated tracks array with unique URLs (placeholders for now)
+// Updated tracks array with artist and releaseDate
 const tracks = [
   {
-    title: "Khen - Sunflakes (Bronzed Re-Edit)",
+    title: "Sunflakes (Bronzed Re-Edit)",
+    artist: "Khen",
+    releaseDate: "Jan 15, 2023",
     url: "https://progressivehouseuniverse.s3.us-east-1.amazonaws.com/Khen_-_Sunflakes_Bronzed_Re-Edit_microCastle_Free_Download.mp3",
   },
   {
-    title: "Hernan Cattaneo - Live Set Sample 4",
-    url: "https://progressivehouseuniverse.s3.us-east-1.amazonaws.com/T%C3%BA_Attair_Civic_Outro_Version.mp3", // Replace with actual URL
+    title: "Live Set Sample 4",
+    artist: "Hernan Cattaneo",
+    releaseDate: "Mar 22, 2023",
+    url: "https://progressivehouseuniverse.s3.us-east-1.amazonaws.com/T%C3%BA_Attair_Civic_Outro_Version.mp3",
   },
   {
-    title: "Yotto - Another Riff 4",
+    title: "Another Riff 4",
+    artist: "Yotto",
+    releaseDate: "May 10, 2023",
     url: "https://example.com/yotto-another-riff-4.mp3", // Replace with actual URL
   },
   {
-    title: "Hernan Cattaneo - Live Set Sample 3",
+    title: "Live Set Sample 3",
+    artist: "Hernan Cattaneo",
+    releaseDate: "Jul 18, 2022",
     url: "https://example.com/hernan-cattaneo-live-set-sample-3.mp3", // Replace with actual URL
   },
   {
-    title: "Yotto - Another Riff 3",
+    title: "Another Riff 3",
+    artist: "Yotto",
+    releaseDate: "Sep 25, 2022",
     url: "https://example.com/yotto-another-riff-3.mp3", // Replace with actual URL
   },
   {
-    title: "Hernan Cattaneo - Live Set Sample 2",
+    title: "Live Set Sample 2",
+    artist: "Hernan Cattaneo",
+    releaseDate: "Nov 30, 2021",
     url: "https://example.com/hernan-cattaneo-live-set-sample-2.mp3", // Replace with actual URL
   },
   {
-    title: "Yotto - Another Riff 2",
+    title: "Another Riff 2",
+    artist: "Yotto",
+    releaseDate: "Feb 14, 2021",
     url: "https://example.com/yotto-another-riff-2.mp3", // Replace with actual URL
   },
 ];
-
 function Releases() {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
