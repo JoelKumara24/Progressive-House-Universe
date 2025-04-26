@@ -6,10 +6,13 @@
 
   .audio-header {
     display: flex;
+    flex-direction: column; // 👈 stack vertically
     align-items: center;
+    justify-content: center;
     gap: 1rem;
-    padding: 2rem;
+    margin-top: 2rem; // 👈 push a little space below hero
   }
+  
 
   .play-toggle-btn {
     font-size: 1rem;
@@ -101,6 +104,34 @@
 .current-time, .duration {
   font-size: 0.8rem;
 }
+
+.hero {
+  text-align: center;
+  margin-top: 8rem;
+  margin-bottom: 5rem;
+
+  h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    animation: fadeIn 1.5s ease forwards;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #aaa;
+    letter-spacing: 2px;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 0.5s;
+  }
+}
+
+/* Smooth fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 
 
 

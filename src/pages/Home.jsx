@@ -62,12 +62,18 @@ function Home() {
 
   return (
     <div className="home">
+
+<div className="hero">
+  <h1>Progressive House Universe</h1>
+  <p>Deep. Melodic. Timeless.</p>
+</div>
+
       {/* Top Header */}
       <div className="audio-header">
         <button className="play-toggle-btn" onClick={handlePlayPause}>
         {isPlaying ? <FaPause /> : <FaPlay />}
         </button>
-        <h2>Khen – Sunflakes (Bronzed Re-Edit)</h2>
+        <h2>Latest Release</h2>
       </div>
 
       {/* Audio Element */}
