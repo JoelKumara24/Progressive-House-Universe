@@ -11,7 +11,6 @@ function AudioVisualizer({ audioRef, isPlaying }) {
   useEffect(() => {
     if (!isPlaying || !audioRef.current || !canvasRef.current) return;
 
-    // Initialize audio context once
     if (!audioContextRef.current) {
       audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
     }
@@ -19,7 +18,6 @@ function AudioVisualizer({ audioRef, isPlaying }) {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    // Prevent multiple sources
     if (!sourceRef.current) {
       sourceRef.current = audioContextRef.current.createMediaElementSource(audioRef.current);
     }
@@ -38,12 +36,12 @@ function AudioVisualizer({ audioRef, isPlaying }) {
       analyser.getByteFrequencyData(dataArray);
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const barWidth = (canvas.width / bufferLength) * 2.5;
+      const barWidth = (canvas.width / bufferLength) * 1.5;
       let x = 0;
 
       for (let i = 0; i < bufferLength; i++) {
         const barHeight = dataArray[i];
-        ctx.fillStyle = "#bbb"; // ash color
+        ctx.fillStyle = "#bbb";
         ctx.fillRect(x, canvas.height - barHeight / 2, barWidth, barHeight / 2);
         x += barWidth + 1;
       }
@@ -53,10 +51,9 @@ function AudioVisualizer({ audioRef, isPlaying }) {
     return () => cancelAnimationFrame(animationRef.current);
   }, [isPlaying, audioRef]);
 
-  // Fade-in/out class based on isPlaying
   const canvasStyle = {
     position: "fixed",
-    bottom: 0,
+    bottom: "60px",
     left: 0,
     width: "100%",
     height: "80px",
