@@ -21,16 +21,7 @@ function Contact() {
           <p>Email: jennifer.hammel@caa.com</p>
         </div>
 
-        {/* Right */}
-        <div className="contact-group">
-          <h2>North America</h2>
-          <p>Wright Bookings</p>
-          <p>Hamilton Wright</p>
-          <p>Online: WrightBookings.com</p>
-
-          <h2>Central and South America</h2>
-          <p>Bookings: Cruz Pereyra Lucena</p>
-        </div>
+       
       </div>
 
       {/* Social Icons */}

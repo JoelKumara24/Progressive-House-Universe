@@ -70,34 +70,41 @@
         }
       }
     }
-  
-    .contact {
-      text-align: center;
-  
-      a {
-        color: #fff;
-        text-decoration: none;
-        transition: color 0.3s ease;
-  
+    .heritage {
+      margin-bottom: 3rem;
+    
+      .heritage-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        background: transparent;
+        padding: 1rem;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+    
         &:hover {
+          background: transparent;
+        }
+    
+        h2 {
+          font-size: 1.8rem;
+          margin: 0;
           color: #fff;
         }
       }
-  
-      .social-links {
+    
+      .heritage-content {
         margin-top: 1rem;
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-  
-        a {
-          font-size: 1rem;
-          color: #b0b0b0;
-  
-          &:hover {
-            color: #fff;
-          }
-        }
+        font-size: 1rem;
+        color: #ccc;
+        line-height: 1.6;
+        padding: 1rem;
+        background: #1e1e1e;
+        border-radius: 8px;
       }
     }
+    
+  
+    
   }
