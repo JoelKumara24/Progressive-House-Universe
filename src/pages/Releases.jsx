@@ -10,13 +10,13 @@ const tracks = [
     title: "Sunflakes (Bronzed Re-Edit)",
     artist: "Khen",
     releaseDate: "Jan 15, 2023",
-    url: "https://progressivehouseuniverse.s3.us-east-1.amazonaws.com/Khen_-_Sunflakes_Bronzed_Re-Edit_microCastle_Free_Download.mp3",
+    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/Khen_-_Sunflakes_Bronzed_Re-Edit_microCastle_Free_Download.mp3",
   },
   {
     title: "Live Set Sample 4",
     artist: "Hernan Cattaneo",
     releaseDate: "Mar 22, 2023",
-    url: "https://progressivehouseuniverse.s3.us-east-1.amazonaws.com/T%C3%BA_Attair_Civic_Outro_Version.mp3",
+    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/T%C3%BA_Attair_Civic_Outro_Version.mp3",
   },
   {
     title: "Another Riff 4",

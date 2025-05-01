@@ -11,7 +11,7 @@ function Home() {
   const [duration, setDuration] = useState(0);
   const [isPlayerVisible, setIsPlayerVisible] = useState(false);
 
-  const audioUrl = "https://progressivehouseuniverse.s3.us-east-1.amazonaws.com/Khen_-_Sunflakes_Bronzed_Re-Edit_microCastle_Free_Download.mp3";
+  const audioUrl = "https://f005.backblazeb2.com/file/PHUtracksbucket/Khen_-_Sunflakes_Bronzed_Re-Edit_microCastle_Free_Download.mp3";
 
   const handlePlayPause = async () => {
     const audio = audioRef.current;
