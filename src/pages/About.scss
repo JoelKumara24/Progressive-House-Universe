@@ -105,6 +105,84 @@
       }
     }
     
+
+    // ===============================
+  // 🔽 Responsive Styles
+  // ===============================
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .intro {
+      font-size: 1rem;
+    }
+
+    .mission,
+    .team,
+    .contact {
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+    }
+
+    .team-members {
+      grid-template-columns: 1fr;
+
+      .team-member {
+        padding: 1rem;
+
+        h3 {
+          font-size: 1.1rem;
+        }
+
+        .role {
+          font-size: 0.85rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .heritage {
+      .heritage-header {
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+
+      .heritage-content {
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.8rem;
+    }
+
+    .intro {
+      font-size: 0.95rem;
+    }
+
+    .heritage-header h2 {
+      font-size: 1.3rem;
+    }
+
+    .heritage-content {
+      font-size: 0.9rem;
+    }
+  }
   
     
   }
