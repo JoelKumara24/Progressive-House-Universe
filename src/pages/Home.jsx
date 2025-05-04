@@ -11,7 +11,7 @@ function Home() {
   const [duration, setDuration] = useState(0);
   const [isPlayerVisible, setIsPlayerVisible] = useState(false);
 
-  const audioUrl = "https://f005.backblazeb2.com/file/PHUtracksbucket/Khen_-_Sunflakes_Bronzed_Re-Edit_microCastle_Free_Download.mp3";
+  const audioUrl = "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_001___Nacho_Barc%C3%BAs.mp3";
 
   const handlePlayPause = async () => {
     const audio = audioRef.current;
@@ -25,6 +25,26 @@ function Home() {
       setTimeout(() => {
         setIsPlayerVisible(false);
       }, 500); // match CSS fade-out duration
+    } else {
+      setIsPlayerVisible(true); // show player first
+      try {
+        await audio.play();
+        setIsPlaying(true);
+      } catch (err) {
+        console.error("Autoplay failed:", err);
+      }
+    }
+  };
+
+  const handlePlayPauseCustom = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+
+      
     } else {
       setIsPlayerVisible(true); // show player first
       try {
@@ -86,8 +106,8 @@ function Home() {
 
       {/* Custom Controls */}
       {isPlayerVisible && (
-        <div className={`custom-controls ${isPlaying ? "visible" : "hidden"}`}>
-          <button onClick={handlePlayPause} className="custom-play-btn">
+        <div className="custom-controls visible">
+          <button onClick={handlePlayPauseCustom} className="custom-play-btn">
   {isPlaying ? <FaPause /> : <FaPlay />}
 </button>
 

@@ -40,9 +40,9 @@ function Blog() {
     <div className="blog">
       <h1>Blog</h1>
       <p className="intro">
-        Catch the latest news, releases, and stories from the PHU scene.
+        Over the Horizon.
       </p>
-
+      { /*
       <div className="blog-posts">
         {blogPosts.map((post, index) => (
           <div key={index} className="blog-post">
@@ -57,7 +57,7 @@ function Blog() {
             </a>
           </div>
         ))}
-      </div>
+      </div>  */}
     </div>
   );
 }

@@ -7,47 +7,42 @@ import { FaPlay, FaPause } from "react-icons/fa";
 // Updated tracks array with artist and releaseDate
 const tracks = [
   {
-    title: "Sunflakes (Bronzed Re-Edit)",
-    artist: "Khen",
+    title: "PHI_RADIO_-_SYLVAN_ECHOES_001",
+    artist: "Nacho_Barcús",
     releaseDate: "Jan 15, 2023",
-    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/Khen_-_Sunflakes_Bronzed_Re-Edit_microCastle_Free_Download.mp3",
+    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_001___Nacho_Barc%C3%BAs.mp3",
   },
   {
-    title: "Live Set Sample 4",
-    artist: "Hernan Cattaneo",
+    title: "PHI_RADIO_-_SYLVAN_ECHOES_002",
+    artist: "Parlagreco",
     releaseDate: "Mar 22, 2023",
-    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/T%C3%BA_Attair_Civic_Outro_Version.mp3",
+    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_002___Parlagreco.mp3",
   },
   {
-    title: "Another Riff 4",
-    artist: "Yotto",
+    title: "PHI_RADIO_-_SYLVAN_ECHOES_003",
+    artist: "Agustin_Pengov",
     releaseDate: "May 10, 2023",
-    url: "https://example.com/yotto-another-riff-4.mp3", // Replace with actual URL
+    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_003___Agustin_Pengov.mp3", // Replace with actual URL
   },
   {
-    title: "Live Set Sample 3",
-    artist: "Hernan Cattaneo",
+    title: "PHI_RADIO_-_SYLVAN_ECHOES_004",
+    artist: "Ponce",
     releaseDate: "Jul 18, 2022",
-    url: "https://example.com/hernan-cattaneo-live-set-sample-3.mp3", // Replace with actual URL
+    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_004___Ponce.mp3", // Replace with actual URL
   },
   {
-    title: "Another Riff 3",
-    artist: "Yotto",
+    title: "PHI_RADIO_-_SYLVAN_ECHOES_005",
+    artist: "THISAK",
     releaseDate: "Sep 25, 2022",
-    url: "https://example.com/yotto-another-riff-3.mp3", // Replace with actual URL
+    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_005___THISAK.mp3", // Replace with actual URL
   },
   {
-    title: "Live Set Sample 2",
-    artist: "Hernan Cattaneo",
+    title: "PHI_RADIO_-_SYLVAN_ECHOES_006",
+    artist: "FRANCO",
     releaseDate: "Nov 30, 2021",
-    url: "https://example.com/hernan-cattaneo-live-set-sample-2.mp3", // Replace with actual URL
+    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_006___FRANCO.mp3", // Replace with actual URL
   },
-  {
-    title: "Another Riff 2",
-    artist: "Yotto",
-    releaseDate: "Feb 14, 2021",
-    url: "https://example.com/yotto-another-riff-2.mp3", // Replace with actual URL
-  },
+  
 ];
 function Releases() {
   const audioRef = useRef(null);
@@ -55,41 +50,35 @@ function Releases() {
   const [currentTrack, setCurrentTrack] = useState(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [isPlayerVisible, setIsPlayerVisible] = useState(false);
+
 
   const handlePlayPause = async (track) => {
     const audio = audioRef.current;
     if (!audio) return;
-
-    console.log(
-      "handlePlayPause called for track:",
-      track.title,
-      "isPlaying:",
-      isPlaying,
-      "currentTrack:",
-      currentTrack?.title
-    );
-
-    // If the clicked track is the currently playing track and it's playing, pause it
+  
     if (currentTrack?.title === track.title && isPlaying) {
-      console.log("Pausing current track:", track.title);
+      // Pause current track
       audio.pause();
       setIsPlaying(false);
-      setCurrentTrack(null);
+      // Keep player visible
     } else {
-      // If another track is playing, stop it first
-      if (isPlaying) {
-        console.log("Stopping currently playing track:", currentTrack?.title);
+      // If another track is playing, stop it
+      if (isPlaying && currentTrack?.title !== track.title) {
         audio.pause();
         setIsPlaying(false);
       }
-
-      // Set and play the new track
-      console.log("Playing new track:", track.title);
-      setCurrentTrack(track);
-      audio.src = track.url;
+  
+      // Only assign new src if switching tracks
+      if (currentTrack?.title !== track.title) {
+        audio.src = track.url;
+        setCurrentTrack(track);
+      }
+  
       try {
         await audio.play();
         setIsPlaying(true);
+        setIsPlayerVisible(true);
       } catch (err) {
         console.error("Autoplay failed:", err);
         setIsPlaying(false);
@@ -97,6 +86,7 @@ function Releases() {
       }
     }
   };
+  
 
   const handleTimeUpdate = () => {
     const audio = audioRef.current;
@@ -120,7 +110,9 @@ function Releases() {
       audio.addEventListener("ended", () => {
         console.log("Track ended:", currentTrack?.title);
         setIsPlaying(false);
-        setCurrentTrack(null);
+setCurrentTrack(null);
+setIsPlayerVisible(false); // ✅ hide when track ends
+
       });
       return () => {
         audio.removeEventListener("timeupdate", handleTimeUpdate);
@@ -151,8 +143,9 @@ function Releases() {
 
       <audio ref={audioRef} controls={false} crossOrigin="anonymous" />
 
-      {currentTrack && (
-        <div className={`custom-controls ${isPlaying ? "visible" : "hidden"}`}>
+      {isPlayerVisible && (
+  <div className="custom-controls visible">
+
           <button onClick={() => handlePlayPause(currentTrack)} className="custom-play-btn">
             {isPlaying ? <FaPause /> : <FaPlay />}
           </button>

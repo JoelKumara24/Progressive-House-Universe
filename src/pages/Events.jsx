@@ -1,3 +1,6 @@
+import "./Events.scss";
+
+
 function Events() {
     return (
       <div className="events">

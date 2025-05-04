@@ -10,10 +10,8 @@ function About() {
 
   return (
     <div className="about">
-      <h1>About Us</h1>
-      <p className="intro">
-        Progressive House Universe is a brand focused on melodic house culture — from artist stories to event vibes.
-      </p>
+      
+      
 
       <section className="mission">
         <h2>Our Mission</h2>
@@ -47,24 +45,24 @@ function About() {
         <h2>Meet the Team</h2>
         <div className="team-members">
           <div className="team-member">
-            <h3>Alex Carter</h3>
+            <h3>Vinith</h3>
             <p className="role">Founder & Curator</p>
             <p>
-              Alex is a lifelong fan of progressive house, with a passion for discovering new talent and organizing unforgettable events.
+              Vinith is a lifelong fan of progressive house, with a passion for discovering new talent and organizing unforgettable events.
             </p>
           </div>
           <div className="team-member">
-            <h3>Sophia Evans</h3>
-            <p className="role">Content Creator</p>
+            <h3>Jova</h3>
+            <p className="role">Professor</p>
             <p>
-              Sophia writes engaging stories about artists and events, bringing the PHU community closer through her words.
+              Jova writes engaging stories about artists and events, bringing the PHU community closer through his words.
             </p>
           </div>
           <div className="team-member">
-            <h3>Michael Reed</h3>
-            <p className="role">Event Coordinator</p>
+            <h3>Joel</h3>
+            <p className="role">Techie</p>
             <p>
-              Michael ensures that every PHU event runs smoothly, creating magical experiences for fans and artists alike.
+              Michael ensures that every PHU website and webapps runs smoothly, creating magical digital experiences for fans and artists alike.
             </p>
           </div>
         </div>
