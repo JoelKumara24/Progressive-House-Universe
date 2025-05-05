@@ -9,37 +9,37 @@ const tracks = [
   {
     title: "PHI_RADIO_-_SYLVAN_ECHOES_001",
     artist: "Nacho_Barcús",
-    releaseDate: "Jan 15, 2023",
+    releaseDate: "Jan 09, 2025",
     url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_001___Nacho_Barc%C3%BAs.mp3",
   },
   {
     title: "PHI_RADIO_-_SYLVAN_ECHOES_002",
     artist: "Parlagreco",
-    releaseDate: "Mar 22, 2023",
+    releaseDate: "Jan 15, 2025",
     url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_002___Parlagreco.mp3",
   },
   {
     title: "PHI_RADIO_-_SYLVAN_ECHOES_003",
     artist: "Agustin_Pengov",
-    releaseDate: "May 10, 2023",
+    releaseDate: "Feb 05, 2025",
     url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_003___Agustin_Pengov.mp3", // Replace with actual URL
   },
   {
     title: "PHI_RADIO_-_SYLVAN_ECHOES_004",
     artist: "Ponce",
-    releaseDate: "Jul 18, 2022",
+    releaseDate: "Feb 16, 2025",
     url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_004___Ponce.mp3", // Replace with actual URL
   },
   {
     title: "PHI_RADIO_-_SYLVAN_ECHOES_005",
     artist: "THISAK",
-    releaseDate: "Sep 25, 2022",
+    releaseDate: "April 14, 2025",
     url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_005___THISAK.mp3", // Replace with actual URL
   },
   {
     title: "PHI_RADIO_-_SYLVAN_ECHOES_006",
     artist: "FRANCO",
-    releaseDate: "Nov 30, 2021",
+    releaseDate: "April 25, 2025",
     url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_006___FRANCO.mp3", // Replace with actual URL
   },
   
@@ -136,7 +136,14 @@ setIsPlayerVisible(false); // ✅ hide when track ends
             <button onClick={() => handlePlayPause(track)} className="track-play-btn">
               {isPlaying && currentTrack?.title === track.title ? <FaPause /> : <FaPlay />}
             </button>
-            <span className="track-title">{track.title}</span>
+            <div className="track-info">
+  <span className="track-title">{track.title}</span>
+  <span className="track-meta">
+    {track.artist} • {track.releaseDate}
+  </span>
+</div>
+
+
           </div>
         ))}
       </div>

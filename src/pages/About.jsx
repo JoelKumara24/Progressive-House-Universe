@@ -48,21 +48,21 @@ function About() {
             <h3>Vinith</h3>
             <p className="role">Founder & Curator</p>
             <p>
-              Vinith is a lifelong fan of progressive house, with a passion for discovering new talent and organizing unforgettable events.
+            Vinith is a passionate tastemaker and sonic explorer, dedicated to uncovering and sharing the finest in progressive house music from around the globe.
             </p>
           </div>
           <div className="team-member">
             <h3>Jova</h3>
-            <p className="role">Professor</p>
+            <p className="role">The Silent Oracle</p>
             <p>
-              Jova writes engaging stories about artists and events, bringing the PHU community closer through his words.
+            Jova is a producer, DJ, and the quiet force behind the scenes—supporting the founder, sparking ideas, and ensuring everything runs smoothly. With over half a decade of entrepreneurial experience and a sharp ear for underground music, he blends creative vision with strategic execution."
             </p>
           </div>
           <div className="team-member">
             <h3>Joel</h3>
-            <p className="role">Techie</p>
+            <p className="role">Techwright</p>
             <p>
-              Michael ensures that every PHU website and webapps runs smoothly, creating magical digital experiences for fans and artists alike.
+            The mind behind the code, the architect of every pixel—our web developer is a low-key genius with a geek streak a mile wide. Quietly handling everything from backend logic to front-end finesse, he's packed with potential and always ten steps ahead.
             </p>
           </div>
         </div>

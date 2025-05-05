@@ -11,14 +11,13 @@ function Contact() {
       <div className="contact-sections">
         {/* Left */}
         <div className="contact-group">
-          <h2>Europe, Africa, Asia & Australia</h2>
-          <p>Creative Artists Agency</p>
-          <p>5th Floor, 3 Shortlands</p>
-          <p>Hammersmith, London W6 8DA</p>
-          <p>United Kingdom</p>
-          <p>Telephone: +44 20 8846-3000</p>
-          <p>Fax: +44 20 8846-3090</p>
-          <p>Email: jennifer.hammel@caa.com</p>
+          <h2>Europe, Italia & Sri Lanka </h2>
+          <p>PHU Agency</p>
+          
+          <p>Milan</p>
+          <p>Italy</p>
+          <p>Telephone: +393513565584</p>
+          <p>Email: progressivehouseitalia@gmail.com</p>
         </div>
 
        
