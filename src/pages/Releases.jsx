@@ -2,48 +2,13 @@ import React, { useRef, useState, useEffect } from "react";
 import AudioVisualizer from "../components/AudioVisualizer";
 import "./Releases.scss";
 import { FaPlay, FaPause } from "react-icons/fa";
+import axios from 'axios';
+
 
 // Updated tracks array with unique URLs (placeholders for now)
 // Updated tracks array with artist and releaseDate
-const tracks = [
-  {
-    title: "PHI_RADIO_-_SYLVAN_ECHOES_001",
-    artist: "Nacho_Barcús",
-    releaseDate: "Jan 09, 2025",
-    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_001___Nacho_Barc%C3%BAs.mp3",
-  },
-  {
-    title: "PHI_RADIO_-_SYLVAN_ECHOES_002",
-    artist: "Parlagreco",
-    releaseDate: "Jan 15, 2025",
-    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_002___Parlagreco.mp3",
-  },
-  {
-    title: "PHI_RADIO_-_SYLVAN_ECHOES_003",
-    artist: "Agustin_Pengov",
-    releaseDate: "Feb 05, 2025",
-    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_003___Agustin_Pengov.mp3", // Replace with actual URL
-  },
-  {
-    title: "PHI_RADIO_-_SYLVAN_ECHOES_004",
-    artist: "Ponce",
-    releaseDate: "Feb 16, 2025",
-    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_004___Ponce.mp3", // Replace with actual URL
-  },
-  {
-    title: "PHI_RADIO_-_SYLVAN_ECHOES_005",
-    artist: "THISAK",
-    releaseDate: "April 14, 2025",
-    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_005___THISAK.mp3", // Replace with actual URL
-  },
-  {
-    title: "PHI_RADIO_-_SYLVAN_ECHOES_006",
-    artist: "FRANCO",
-    releaseDate: "April 25, 2025",
-    url: "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_006___FRANCO.mp3", // Replace with actual URL
-  },
-  
-];
+
+
 function Releases() {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -51,6 +16,20 @@ function Releases() {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isPlayerVisible, setIsPlayerVisible] = useState(false);
+
+  const [tracks, setTracks] = useState([]);
+useEffect(() => {
+  const fetchTracks = async () => {
+    try {
+      const res = await axios.get('https://phu-backend.onrender.com/api/tracks'); // or '/api/tracks' if using Vite proxy
+      setTracks(res.data);
+    } catch (err) {
+      console.error("Error fetching tracks:", err);
+    }
+  };
+
+  fetchTracks();
+}, []);
 
 
   const handlePlayPause = async (track) => {
@@ -71,7 +50,8 @@ function Releases() {
   
       // Only assign new src if switching tracks
       if (currentTrack?.title !== track.title) {
-        audio.src = track.url;
+        audio.src = track.audioUrl; // not track.url
+
         setCurrentTrack(track);
       }
   

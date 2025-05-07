@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
+import axios from "axios";
 import AudioVisualizer from "../components/AudioVisualizer";
 import "./Home.scss";
 import { FaPlay, FaPause } from "react-icons/fa";
-
 
 function Home() {
   const audioRef = useRef(null);
@@ -10,8 +10,7 @@ function Home() {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isPlayerVisible, setIsPlayerVisible] = useState(false);
-
-  const audioUrl = "https://f005.backblazeb2.com/file/PHUtracksbucket/PHI_RADIO_-_SYLVAN_ECHOES_001___Nacho_Barc%C3%BAs.mp3";
+  const [latestTrack, setLatestTrack] = useState(null);
 
   const handlePlayPause = async () => {
     const audio = audioRef.current;
@@ -20,13 +19,11 @@ function Home() {
     if (isPlaying) {
       audio.pause();
       setIsPlaying(false);
-
-      // Fade out smoothly
       setTimeout(() => {
         setIsPlayerVisible(false);
-      }, 500); // match CSS fade-out duration
+      }, 500);
     } else {
-      setIsPlayerVisible(true); // show player first
+      setIsPlayerVisible(true);
       try {
         await audio.play();
         setIsPlaying(true);
@@ -43,10 +40,8 @@ function Home() {
     if (isPlaying) {
       audio.pause();
       setIsPlaying(false);
-
-      
     } else {
-      setIsPlayerVisible(true); // show player first
+      setIsPlayerVisible(true);
       try {
         await audio.play();
         setIsPlaying(true);
@@ -70,6 +65,23 @@ function Home() {
     audio.currentTime = seekTime;
   };
 
+  // 👉 Fetch and sort tracks on load
+  useEffect(() => {
+    const fetchLatestTrack = async () => {
+      try {
+        const res = await axios.get("https://phu-backend.onrender.com/api/tracks"); // or /api/tracks if proxied
+        const sorted = res.data.sort(
+          (a, b) => new Date(b.releaseDate) - new Date(a.releaseDate)
+        );
+        setLatestTrack(sorted[0]);
+      } catch (err) {
+        console.error("Failed to fetch tracks:", err);
+      }
+    };
+
+    fetchLatestTrack();
+  }, []);
+
   useEffect(() => {
     const audio = audioRef.current;
     if (audio) {
@@ -82,35 +94,35 @@ function Home() {
 
   return (
     <div className="home">
-
-<div className="hero">
-  <h1>Progressive House Universe</h1>
-  <p>Deep. Melodic. Timeless.</p>
-</div>
-
-      {/* Top Header */}
-      <div className="audio-header">
-        <button className="play-toggle-btn" onClick={handlePlayPause}>
-        {isPlaying ? <FaPause /> : <FaPlay />}
-        </button>
-        <h2>Latest Release</h2>
+      <div className="hero">
+        <h1>Progressive House Universe</h1>
+        <p>Deep. Melodic. Timeless.</p>
       </div>
 
-      {/* Audio Element */}
+      <div className="audio-header">
+        <button className="play-toggle-btn" onClick={handlePlayPause}>
+          {isPlaying ? <FaPause /> : <FaPlay />}
+        </button>
+        <h2>Latest Release</h2>
+        {latestTrack && (
+          <p className="track-meta">
+            {latestTrack.title} — {latestTrack.artist}
+          </p>
+        )}
+      </div>
+
       <audio
         ref={audioRef}
-        src={audioUrl}
+        src={latestTrack?.audioUrl || ""}
         crossOrigin="anonymous"
-        controls={false} // Hide ugly browser controls
+        controls={false}
       />
 
-      {/* Custom Controls */}
       {isPlayerVisible && (
         <div className="custom-controls visible">
           <button onClick={handlePlayPauseCustom} className="custom-play-btn">
-  {isPlaying ? <FaPause /> : <FaPlay />}
-</button>
-
+            {isPlaying ? <FaPause /> : <FaPlay />}
+          </button>
 
           <input
             type="range"
@@ -121,17 +133,17 @@ function Home() {
             className="custom-progress-bar"
           />
 
-          <span className="current-time">{formatTime(currentTime)}</span> / <span className="duration">{formatTime(duration)}</span>
+          <span className="current-time">{formatTime(currentTime)}</span> /{" "}
+          <span className="duration">{formatTime(duration)}</span>
         </div>
       )}
 
-      {/* Visualizer */}
       <AudioVisualizer audioRef={audioRef} isPlaying={isPlaying} />
     </div>
   );
 }
 
-// Helper to format time
+// ⏱ Format time into mm:ss
 function formatTime(time) {
   const minutes = Math.floor(time / 60);
   const seconds = Math.floor(time % 60)

@@ -8,6 +8,7 @@ import Events from "./pages/Events";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import AdminDashboard from './pages/AdminDashboard';
 import "./assets/styles/main.scss";
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
             <Route path="/releases" element={<Releases />} />
             <Route path="/events" element={<Events />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </main>
         <Footer />
